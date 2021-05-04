@@ -29,9 +29,6 @@ class MoviesPage extends Component {
     
         
 
-
-    
-
     render() {
         const { movies}=this.state
     

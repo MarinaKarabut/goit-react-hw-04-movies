@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { trendMovies} from '../Movie/service/movie-service';
 
-import Loader from '../../client/Movie/components/Loader'
+
 import MovieList from "../Movie/components/MovieList/MovieList";
 
 import styles from './HomePage.module.css'
@@ -48,11 +48,10 @@ class HomePage extends Component {
     }
 
     render() {
-        const { movies, loading } = this.state
+        const { movies } = this.state
         return (
             <>
                 <h1 className={styles.title}>Trending today</h1>
-                {loading && <Loader />}
                 <div className={styles.wrapper}>
                     <MovieList movies={movies} />
                 </div>
