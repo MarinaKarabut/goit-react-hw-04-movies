@@ -1,0 +1,20 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+.img {
+  border-radius: 5px;
+  height: 250px;
+  margin-bottom: 5px;
+}
+
+.wrapper {
+  padding: 20px 55px;
+  margin: auto;
+}
+.titleName {
+  font-weight: 600;
+  margin-bottom: 5px;
+}

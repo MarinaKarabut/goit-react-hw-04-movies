@@ -1,0 +1,21 @@
+.movieCardImg {
+  border-radius: 5px;
+  height: 398px;
+  cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.movieCardImg:hover {
+  box-shadow: 0px -2px 32px 1px rgba(0, 0, 0, 0.69);
+  transform: scale(1.02);
+}
+
+.movieCardTitle {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.item {
+  margin: auto;
+}

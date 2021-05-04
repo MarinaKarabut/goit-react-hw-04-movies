@@ -1,0 +1,74 @@
+.wrapper {
+  padding: 20px 55px;
+  margin: auto;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 300px 2fr;
+  grid-gap: 30px;
+}
+.movieCardImg {
+  border-radius: 5px;
+  height: 398px;
+  cursor: pointer;
+}
+.title {
+  margin-bottom: 20px;
+}
+
+.text {
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.spanText {
+  font-weight: 400;
+}
+
+.button {
+  height: 32px;
+  border-radius: 2px;
+  border: none;
+  background: #a31ea2;
+  color: #fff;
+  font-weight: 500;
+  width: 100px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+  background-color: #cd00cd;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding: 0 40px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.link {
+  display: inline-block;
+  padding: 12px;
+  font-weight: 500;
+  color: #000;
+  font-size: 18px;
+}
+
+.link:hover {
+  color: #a31ea2;
+}
+.box {
+  margin-top: 40px;
+  border-top: 2px solid #a31ea2;
+}
+
+.genresList {
+  display: inline-block;
+  padding-right: 5px;
+}
