@@ -65,14 +65,14 @@ class MovieDetailsPage extends Component {
         return (
             <>
                 {error && <ErrorMessage text={`Something went wrong. Try again!`} />}
-                <MovieCard
+                {!error && (<MovieCard
                     title={movie.title}
                     popularity={movie.vote_average}
                     overview={movie.overview}
                     genres={movie.genres}
                     image={newImg}
                     idFilm={movie.id}
-                />
+                />)}
 
 
 
