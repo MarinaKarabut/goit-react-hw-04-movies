@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieListItem from '../MovieListItem';
 
 import styles from './MovieList.module.css';
@@ -15,3 +16,13 @@ function MovieList({ movies }) {
 };
 
 export default MovieList;
+
+
+MovieList.defaultProps = {
+    movies: [],
+}
+
+
+MovieList.propTypes = {
+    movies: PropTypes.array,
+  }

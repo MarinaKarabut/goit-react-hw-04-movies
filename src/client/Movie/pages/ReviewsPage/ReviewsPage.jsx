@@ -1,6 +1,8 @@
 
 import { Component } from 'react';
-import { getMovieReviews} from '../../service/movie-service';
+import { getMovieReviews } from '../../service/movie-service';
+import ReviewsList from '../../components/ReviewsList';
+import ErrorMessage from '../../components/ErrorMessage';
 
 import styles from './ReviewsPage.module.css'
 
@@ -39,6 +41,9 @@ class Reviews extends Component {
                     error
                 })
             }
+            finally{
+                this.setState({ loading: false })
+            }
             
         }
     }
@@ -46,24 +51,17 @@ class Reviews extends Component {
 
 
     render() {
-        const { reviews } = this.state
-    
-        const reviewEl = reviews.map(review => (
-            <li key={review.id}>
-                <h2 className={ styles.title}>Author: {review.author }</h2>
-                    <p>{ review.content}</p>
-            </li>
-        )).filter(elem => elem).slice(0, 5)
-        
+        const { reviews, error } = this.state
+ 
         return (
+            <>
+                {error && <ErrorMessage text={`Something went wrong. Try again!`} />}
         
-                <div className={ styles.wrapper}>
-                <ul>
-                    {reviews.length ? (reviewEl): (<p className={styles.notification}>We don`t have any reviews for this movie.</p>)}
-        
-                    </ul>
-
+                <div className={styles.wrapper}>
+                    <ReviewsList reviews={reviews}/>
                 </div>
+            </>
+            
             )
     }
     

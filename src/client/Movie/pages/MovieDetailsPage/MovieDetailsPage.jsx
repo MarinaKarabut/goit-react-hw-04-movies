@@ -1,15 +1,17 @@
 
-import { Component } from 'react';
+import { Component} from 'react';
+import { Route} from "react-router-dom"
 import { getOneMovie } from '../../service/movie-service';
-import {Route } from 'react-router-dom';
-
-
-import MovieCard from '../../components/MovieCard';
-import ReviewsPage from '../../pages/ReviewsPage';
-import CastPage from '../../pages/CastPage'; 
-
+import routes from '../../../../app/components/App/routes';
 
 import defaultImg from '../../../../images/404.jpeg'
+
+import ErrorMessage from '../../components/ErrorMessage';
+import MovieCard from '../../components/MovieCard';
+import CastPage from '../CastPage';
+import ReviewsPage from '../ReviewsPage';
+
+
 
 class MovieDetailsPage extends Component {
     state = {
@@ -21,7 +23,6 @@ class MovieDetailsPage extends Component {
             genres: [],
             idFilm: null
         },
-        // cast: [],
         loading: false
     }
 
@@ -50,31 +51,39 @@ class MovieDetailsPage extends Component {
                     error
                 })
             }
+            finally{
+                this.setState({ loading: false })
+            }
 
-        //     const { data } = await getMovieCast(movieId)
-        //          this.setState({
-        //             cast: data.cast,
-        //             loading: false
-        //          })
-        //     console.log(this.state.cast);
         }
     }
 
    
     render() {
-        const {movie} = this.state
+        const {movie, error} = this.state
         const newImg = movie.poster_path? `https://image.tmdb.org/t/p/w500${movie.poster_path}`: defaultImg
         return (
             <>
-            <MovieCard
-                title={movie.title}
-                popularity={movie.vote_average}
-                overview={movie.overview}
-                genres={movie.genres}
-                image={newImg}
+                {error && <ErrorMessage text={`Something went wrong. Try again!`} />}
+                <MovieCard
+                    title={movie.title}
+                    popularity={movie.vote_average}
+                    overview={movie.overview}
+                    genres={movie.genres}
+                    image={newImg}
+                    idFilm={movie.id}
                 />
-            <Route path="/movies/:movieId" component={CastPage} />
-            <Route path="/movies/:movieId" component={ReviewsPage} />
+
+
+
+                <Route path={routes.cast} render={(props) => <CastPage {...props}/>} />
+                <Route path={routes.reviews} render={(props) => <ReviewsPage {...props} />} />
+
+               
+                
+
+            
+
             </>
         )
     }

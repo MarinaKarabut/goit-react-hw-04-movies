@@ -1,11 +1,12 @@
 import React from 'react';
-import { withRouter,NavLink } from 'react-router-dom';
-import routes from '../../../../routes';
+import { withRouter,NavLink} from 'react-router-dom';
+import routes from '../../../../app/components/App/routes';
+import Button from '../ButtonGoBack';
+
 
 import styles from './MovieCard.module.css';
 
-function MovieCard({ genres, title, image, popularity, overview, location, history, match }) {
-    console.log(match);
+function MovieCard({ idFilm, genres, title, image, popularity, overview, location, history, match, movieId }) {
     const handleGoBack = () => {
         history.push(location?.state?.from || routes.home);
     }
@@ -13,7 +14,7 @@ function MovieCard({ genres, title, image, popularity, overview, location, histo
     const genreEl = genres.map(({ id, name }) => (<li key={id} className={styles.genresList}>{name}</li>))
     return (
         <div className={styles.wrapper}>
-            <button className={styles.button} type="button" onClick={handleGoBack}>  Go back</button>
+            <Button onClick={handleGoBack}>Go back</Button>
             <div className={styles.card}>
                 <div >
                     <img className={styles.movieCardImg} src={image}
@@ -35,26 +36,20 @@ function MovieCard({ genres, title, image, popularity, overview, location, histo
             <div>
                 <ul className={styles.box}>
                     <li className={styles.link}>
-                        <NavLink className={styles.link}
-                            activeClassName={styles.active} exact to={
-                                {
-                                    pathname: `${match.url}/cast`,
-                                    state: { from: location },
-                                }}>
+                        <NavLink exact to={`/movies/${idFilm}/cast`} className={styles.link}
+                            activeClassName={styles.active} >
                             Cast
-                            </NavLink>
+                        </NavLink>
                     </li>
                     <li className={styles.link}>
-                        <NavLink className={styles.link}
-                            activeClassName={styles.active} to={
-                                {
-                                    pathname: `${match.url}/reviews`,
-                                    state: { from: location },
-                                }}>
+                        <NavLink to={`/movies/${idFilm}/reviews`} className={styles.link}
+                            activeClassName={styles.active} >
                             Reviews
-                            </NavLink>
+                        </NavLink>
                     </li>
                 </ul>
+            
+
             </div>
         </div>
         

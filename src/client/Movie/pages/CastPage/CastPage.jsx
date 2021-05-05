@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { getMovieCast } from '../../service/movie-service';
-// import MovieDetailsPage from '../MovieDetailsPage';
-// import React from 'react';
+import CastList from '../../components/CastList';
+import ErrorMessage from '../../components/ErrorMessage';
 
 import styles from './CastPage.module.css'
 
@@ -10,7 +10,9 @@ import defaultImg from '../../../../images/404.jpeg'
 class CastPage extends Component {
     state = {
         profiles: [],
-        loading:false,
+        loading: false,
+        error: null,
+    
     }
 
     componentDidMount() {
@@ -18,6 +20,7 @@ class CastPage extends Component {
             loading:true
         })
     }
+
 
     async componentDidUpdate() {
         const { loading } = this.state;
@@ -49,7 +52,8 @@ class CastPage extends Component {
                     loading: false,
                     error
                 })
-            } 
+            }
+            
             
         }
     }
@@ -57,49 +61,20 @@ class CastPage extends Component {
 
     render() {
 
-        const { profiles } = this.state
-        
-        const profileEl = profiles.map(profile => (
-            <li key={profile.id}> <img className={styles.img} src={profile.profile_path} alt={profile.name} />
-                <p className={styles.titleName}>{profile.name }</p>
-                    <p>{ profile.character}</p>
-            </li>
-        )).filter(elem => elem).slice(0, 10)
+        const { profiles , error} = this.state
         
         return (
             <>
-                {/* <MovieDetailsPage /> */}
+                {error && <ErrorMessage text={`Something went wrong. Try again!`} />}
+                
                 <div className={styles.wrapper}>
-                    <ul className={styles.list}>
-                        {profileEl}
-                    </ul>
-
+                    <CastList profiles={ profiles}/>
                 </div>
+                
             </>)
     }
     
 };
 
-// const CastPage = ({ cast }) => {
-//     const newProfilesPath = cast.profile_path ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}` : defaultImg
-//     const profileEl = cast.map(profile => (
-//             <li key={profile.id}> <img className={styles.img} src={newProfilesPath} alt={profile.name} />
-//                 <p className={styles.titleName}>{profile.name }</p>
-//                     <p>{ profile.character}</p>
-//             </li>
-//         )).filter(elem => elem).slice(0, 10)
-    
-//     return (
-//             <>
-//                 <div className={styles.wrapper}>
-//                     <ul className={styles.list}>
-//                         {profileEl}
-//                     </ul>
-
-//                 </div>
-//             </>)
-// }
- 
-// export default CastPage;
 
 export default CastPage;

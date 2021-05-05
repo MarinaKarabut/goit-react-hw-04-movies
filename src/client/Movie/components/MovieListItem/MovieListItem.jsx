@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import defaultImg from '../../../../images/404.jpeg';
 
@@ -22,3 +23,11 @@ function MovieListItem({ id, poster_path, original_title, original_name }) {
 };
 
 export default MovieListItem;
+
+MovieListItem.propTypes = {
+    poster_path: PropTypes.string,
+    original_title: PropTypes.string,
+    id : PropTypes.number.isRequired,
+  };
+  
+
