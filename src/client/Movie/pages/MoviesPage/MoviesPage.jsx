@@ -51,11 +51,10 @@ class MoviesPage extends Component {
         }
     }
  
-
     
-    async componentDidUpdate(prevProps, prevState, snapshot) {
-        const { loading, query  } = this.state
-  
+   async componentDidUpdate(prevProps, prevState, snapshot) {
+       const { loading, query } = this.state
+       
         if (loading) {
             try {
             const { data } = await searchMovies(query)
@@ -81,10 +80,7 @@ class MoviesPage extends Component {
         }   
     }
 
-
-
-
-      
+     
     
     onChangeQuery = searchQuery => {
         this.setState({
@@ -118,9 +114,7 @@ class MoviesPage extends Component {
                     <MovieList movies={movies} />
                 </div>
                 {error && <ErrorMessage text={`Something went wrong. Try again!`} />}
-
-               
-             
+            
             </>
         )
     }

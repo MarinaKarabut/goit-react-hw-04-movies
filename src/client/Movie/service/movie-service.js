@@ -8,7 +8,7 @@ export const trendMovies = () => {
 
 export const searchMovies = (query) => {
   return instance.get(
-    `/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${query}`
+    `/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&query=${query}&page=$`
   )
 }
 
