@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter,NavLink} from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types'
 import routes from '../../../../app/components/App/routes';
 import Button from '../ButtonGoBack';
 
@@ -58,6 +59,16 @@ function MovieCard({ idFilm, genres, title, image, popularity, overview, locatio
 }
                     
 export default withRouter(MovieCard);
+
+MovieCard.propTypes = {
+    title: PropTypes.string,
+    popularity: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.array,
+    image: PropTypes.string,
+    idFilm: PropTypes.number
+  
+};
 
 
 
