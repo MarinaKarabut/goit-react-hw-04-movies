@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fields } from './fields'
+import Button from '../Button'
 
 import styles from './SearchForm.module.css';
 
@@ -29,7 +30,7 @@ class SearchForm extends Component {
              <>
                 <form className={ styles.form} onSubmit={handleSubmit}>
                     <input className={styles.input} onChange={handleChange} {...fields.query} value={searchQuery} />                  
-                    <button className={styles.button} type="submit">Search</button>
+                    <Button type="submit">Search</Button>
                 </form>
              
             </>
