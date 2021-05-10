@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fields } from './fields'
-import Button from '../Button'
+import Button from '../../../../shared/Button'
 
 import styles from './SearchForm.module.css';
 

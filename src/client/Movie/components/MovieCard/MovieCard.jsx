@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import routes from '../../../../app/components/App/routes';
-import Button from '../Button';
+import Button from '../../../../shared/Button';
 
 
 import styles from './MovieCard.module.css';
