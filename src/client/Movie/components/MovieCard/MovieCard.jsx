@@ -1,21 +1,18 @@
 import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types'
-import routes from '../../../../app/components/App/routes';
 import Button from '../../../../shared/Button';
 
 
 import styles from './MovieCard.module.css';
 
-function MovieCard({ idFilm, genres, title, image, popularity, overview, location, history, match, movieId }) {
-    const handleGoBack = () => {
-        history.push(location?.state?.from || routes.home);
-    }
+function MovieCard({ idFilm, genres, title, image, popularity, overview, history, }) {
+
 
     const genreEl = genres.map(({ id, name }) => (<li key={id} className={styles.genresList}>{name}</li>))
     return (
         <div className={styles.wrapper}>
-            <Button onClick={handleGoBack}>Go back</Button>
+            <Button onClick={()=> history.goBack()}>Go back</Button>
             <div className={styles.card}>
                 <div >
                     <img className={styles.movieCardImg} src={image}
